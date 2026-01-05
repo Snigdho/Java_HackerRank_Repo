@@ -1,3 +1,5 @@
+// https://www.hackerrank.com/challenges/java-substring/problem
+
 import java.util.*;
 
 public class Solution {
