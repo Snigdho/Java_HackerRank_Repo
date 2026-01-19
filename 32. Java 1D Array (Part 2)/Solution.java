@@ -4,20 +4,21 @@ import java.util.*;
 
 public class Solution {
 
-    public static boolean haswon;
-    public static int gameSize;
+    private static boolean haswon;
+    private static int gameSize;
+    private static int leap;
 
-    public static boolean canWin(int leap, int[] game) {
+    public static boolean canWin(int leapValue, int[] game) {
         // Return true if you can win the game; otherwise, return false.
         haswon = false;
         gameSize = game.length;
+        leap = leapValue;
         boolean[] alreadyVisited = new boolean[gameSize]; // all are initialized to false by default
 
-        return dfsCanWin(leap, game, alreadyVisited, 0);
+        return dfsCanWin(game, alreadyVisited, 0);
     }
 
     public static boolean dfsCanWin(
-        int leap,
         int[] game,
         boolean[] alreadyVisited,
         int currentIndex
@@ -35,9 +36,9 @@ public class Solution {
 
         if (haswon) return true;
         if (
-            dfsCanWin(leap, game, alreadyVisited, currentIndex + leap) ||
-            dfsCanWin(leap, game, alreadyVisited, currentIndex + 1) ||
-            dfsCanWin(leap, game, alreadyVisited, currentIndex - 1)
+            dfsCanWin(game, alreadyVisited, currentIndex + leap) ||
+            dfsCanWin(game, alreadyVisited, currentIndex + 1) ||
+            dfsCanWin(game, alreadyVisited, currentIndex - 1)
         ) return true;
 
         return haswon ? true : false;
