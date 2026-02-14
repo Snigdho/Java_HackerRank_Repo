@@ -103,17 +103,27 @@ class SumInLeavesVisitor extends TreeVis {
 
 class ProductOfRedNodesVisitor extends TreeVis {
 
+    private long product = 1L;
+
     public int getResult() {
         //implement this
-        return 1;
+        return (int) product;
     }
 
     public void visitNode(TreeNode node) {
         //implement this
+        increaseProduct(node);
     }
 
     public void visitLeaf(TreeLeaf leaf) {
         //implement this
+        increaseProduct(leaf);
+    }
+
+    private void increaseProduct(Tree tree) {
+        if (tree.getColor() == Color.RED) {
+            product *= tree.getValue();
+        }
     }
 }
 
